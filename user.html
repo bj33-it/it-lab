@@ -75,7 +75,7 @@
        
             var validCredentials = [
              
-                { username: 'admin', password: 'password' }
+                { username: 'test', password: 'test' }
             ];
 
             var username = document.getElementById('username').value;
@@ -87,11 +87,11 @@
 
             if (isValid) {
                 // 登入成功，另開新視窗執行指定的網站
-                var newWindow = window.open('https://drive.google.com/drive/folders/10NY81BYS1duzxFYYvNLaduVztwY14ENk?usp=sharing', '_blank');
+                var newWindow = window.open('modules/log.html', '_blank');
                 newWindow.focus(); // 讓新視窗獲得焦點
             } else {
                 // 登入失敗，另開新視窗顯示錯誤頁面
-                var errorWindow = window.open('https://sites.google.com/view/112311-hcjh-tn-edu-tw/error32', '_blank');
+                var errorWindow = window.open('index.html', '_blank');
                 errorWindow.focus(); // 讓新視窗獲得焦點
             }
         });
