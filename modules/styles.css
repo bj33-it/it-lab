@@ -1,0 +1,40 @@
+*{
+    padding: 5;
+    margin:0;
+}
+header {
+    background-color: black;
+    left: 1;
+}
+header h2 {
+    color: white;
+}
+header h3 {
+    color: white;
+}
+nav li {
+    display:inline
+
+}
+nav{
+    background-color: blue;
+}
+main {
+    display: flex;
+    flex-direction: column;
+    color: black;
+    align-items: center;
+    justify-items: center;
+
+}
+/* .cover{
+    height: 85vh;
+    background-image:url("bg.jpg") ;
+} */
+/* nav ul {
+    position: absolute;
+    top: 50px;
+} */
+nav a {
+    color: white;
+}
