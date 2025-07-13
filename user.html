@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>bj33 IT lab - 會員登入</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      height: 100vh;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #f5f5f5;
+    }
+    .login-container {
+      background: #fff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+      width: 300px;
+    }
+    .login-container h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .login-container input {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: none;
+      border-bottom: 2px solid #ccc;
+      outline: none;
+    }
+    .login-container input:focus {
+      border-bottom: 2px solid #00b3f5;
+    }
+
+    .login-container button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: none;
+      cursor: pointer;
+      font-size: 16px;
+      color: white;
+      border-radius: 5px;
+    }
+
+    .login-container button:first-of-type {
+      background-color: #00b3f5; /* 登入按鈕顏色 */
+    }
+    .login-container button:first-of-type:hover {
+      background-color: #01739c;
+    }
+
+    .login-container .close-button {
+      background-color: #888; /* 關閉按鈕顏色 */
+      margin-top: 10px;
+    }
+    .login-container .close-button:hover {
+      background-color: #555;
+    }
+  </style>
+</head>
+<body>
+  <div class="login-container">
+    <h2>登入</h2>
+    <input type="text" id="username" placeholder="輸入帳號" autofocus />
+    <input type="password" id="password" placeholder="輸入密碼" />
+    <button onclick="login()">確認</button>
+    <button class="close-button" onclick="openLink()">關閉</button>
+  </div>
+
+  <script>
+    window.onload = function() {
+    alert("【聲         明】\n本網頁的檔案資料僅供內部做使用，未經許可前，不得將資料外流!使用完畢請務必登出!");
+
+     };
+    const validAccounts = [
+      { username: "user1", password: "pass1" },
+      { username: "test", password: "test" }
+    ];
+
+    let failedAttempts = 0;
+    const successURL = "modules/log.html"; // 修改為你的目標網址
+    const exitURL = "index.html"; // 修改為你的目標網址
+
+    document.addEventListener("keydown", function(event) {
+      if (event.key === "Enter") {
+        login();
+      }
+    });
+
+    function login() {
+      const username = document.getElementById("username").value.trim();
+      const password = document.getElementById("password").value.trim();
+
+      const isValid = validAccounts.some(
+        acc => acc.username === username && acc.password === password
+      );
+
+      if (isValid) {
+        clearFields();
+        window.location.href = successURL;
+      } else {
+        failedAttempts++;
+        alert("登入失敗，若忘記密碼，請聯絡您的系統管理員!");
+        if (failedAttempts >= 3) {
+          alert("錯誤次數過多，頁面即將關閉!");
+          window.location.href = exitURL;
+        }
+        document.getElementById("password").value = "";
+        document.getElementById("password").focus();
+      }
+    }
+
+    function openLink() {
+      window.location.href = exitURL;
+    }
+
+    function clearFields() {
+      document.getElementById("username").value = "";
+      document.getElementById("password").value = "";
+      document.getElementById("username").focus();
+    }
+  </script>
+</body>
+</html>
